@@ -1,0 +1,91 @@
+// Chapter 3 - base
+convention camelCase : première lettre du 2ème mot et ceux d'après.
+convention PascalCase : première lettre de chaque mot.
+----------------------------
+Utiliser une const si on ne doit jamais la modifier, utiliser let si on doit, sinon utiliser var
+On ne peut pas redéfinir l'objet d'une constante ni d'un let. Par contre on peut le redéfinir en le pointant,
+ex : 
+const test = {
+    name : test
+}
+
+const test = {
+    name : test
+}
+
+// error
+const test = {
+    name : test
+}
+test.name = truc
+// success
+Les variables sont toutes modifiables a la volée, mauvaise pratique, toujours préfèrer let / const.
+
+----------------------------
+boucles asynchrone : 
+en utilisant var dans un for avec un setTimeout() le retour est la dernière valeur de la boucle et il ne montre pas les exécutions entre temps.
+for (var i = 0; i < 10; i++) {
+  setTimeout(() => {
+    console.log(i);
+  }, 10);
+} // retourne 10
+for (let i = 0; i < 10; i++) {
+  setTimeout(() => {
+    console.log(i);
+  }, 10);
+} // retourne 1,2,3...
+
+
+-- Errors :
+Reference error : pas de déclaration de variable.
+
+-- Notions de précédence et d'associativité - Ordre des opérateurs -> voir mozilla
+-- Conversion implicite // coercion -> voir mozilla 
+
+-- Notions de valeur et de référence
+  ----------------------------
+  Les primitives : 
+  Les primitives sont pour rappel : les booléens, null, undefined, les nombres, les BigInt, les chaînes de caractères et les symboles.
+  Les primitives sont donc immuables et ne peuvent pas être modifiées.
+  exemple :
+  let a = 'bon';
+  let b = 'jour';
+  let c = a + b;
+  console.log(c); // "bonjour"
+
+  a = 'test';
+  console.log(c); // "bonjour"
+  ----------------------------
+  Les objets :
+  Les objets sont copiés par référence
+  Une référence à un objet est son adresse dans la mémoire.
+
+  Comme les objets peuvent être très volumineux il est beaucoup plus efficient de ne pas les copier à chaque fois mais de passer leur référence,
+  c'est-à-dire leur adresse, lors d'assignations :
+  exemple :
+  const obj = {a: 1};
+  const obj2 = obj;
+  obj2.a = 2;
+  console.log(obj); // {a: 2}
+
+  Les objets sont comparés par référence
+  Le objets sont également comparés par référence :
+
+  const obj = {a: 1};
+  const obj2 = obj;
+  console.log(obj === obj2); // true
+  const obj3 = {a: 1};
+  console.log(obj === obj3); // false
+  // Même chose ici :
+  console.log( {} === {}); // false
+
+  La première comparaison est évidente. Les deux variables obj et obj2 contiennent la même référence vers le même objet et l'égalité stricte est donc vraie.
+
+  La deuxième comparaison est moins évidente, mais c'est le même mécanisme.
+
+  Lorsque nous faisons {a: 1}, nous créons un nouvel objet et qui a donc une nouvelle référence, c'est-à-dire une nouvelle adresse en mémoire.
+
+  Donc lorsque nous comparons les valeurs de obj et de obj3, les deux références sont différentes. 
+  Peu importe que les deux objets aient les mêmes propriétés car ce sont les références qui sont comparées.
+
+  C'est une des notions les plus importantes en JavaScript, vous pourrez y revenir lorsque nous aurons vu en détails les objets.

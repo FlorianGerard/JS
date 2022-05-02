@@ -1,0 +1,74 @@
+Package-lock : Liste les dépendances des dépendances se trouvant dans package.json | On y touche pas spécialement.
+node_modules : Dossier ou se trouvent toutes les dépendances.
+------
+scripts : 
+"babel" : "babel nom_du_fichier" exécute le contenu du fichier a l'instar de directement l'appeler si on fait "babel" : "nom_du_fichier".
+params :
+-o | --out-file : append le contenu du fichier a un nouveau fichier ex : "babel" : "babel es6.js -o es6AddAfter.js"
+--out-dir : créer dans un dossier particulier ex : "babel" : "babel src --out-dir dist"
+------
+Emmet : !->enter génère une page HTML complète
+------
+Webpack :
+Initialisation
+npm i webpack webpack-cli webpack-dev-server babel-loader - dépendances de webpack pour babel, le CLI (command line interface) et le serveur web (localhost:xxx)
+
+entry : point d'entrée / path du fichier js de base. param : main
+output : sortie pour le fichier transformé une fois que les opérations ont été faite. param : path, filename
+module : param : rule; rules : params : exclude, use, test (dans l'exemple regex test inclut tout les js, exclude enlève node module, use utilise le babel-loader).
+plugins : fonctionnalités supplémentaire via npm. utilisation du plugin html-webpack-plugin.
+
+devServer : Configuration du dev server localhost
+open : true/false - pas ouvrir le navigateur
+// contentBase : string - folder de l'application - Obselète
+modification de contentBase sur les nouvelles versions pour static : path.resolve(__dirname, './dist)
+port : port utilisé
+------
+Modification du package Json pour utilisé webPack : 
+dans scripts : 
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack", // lance la commande webpack
+    "start": "webpack server" // lance la commande de serveur dev
+  },
+------
+Information générale webpack & js :
+
+resolve() : résous deux chemin pour renvoyer un chemin absolu
+
+__dirname : renvoi le chemin absolu vers le dossier contenant le fichier exécuté (ici le fichier de Configuration).
+
+module loader : Les loaders permettent de charger tous les autres types de fichier pour que Webpack puissent les ajouter à l'arbre des dépendances.
+
+Les loaders transforment les fichiers en modules compatibles Webpack
+
+rules : permet de configurer les règles à appliquer pour les différents fichiers.
+chaque règle comporte une propriété test qui prend une regex pour tester les noms de fichiers passer dans la propriété use.
+exemple : 
+module: {
+    rules: [
+      { test: /\.txt$/, use: 'raw-loader' }
+    ]
+  }
+
+plugins : réalise des opérations globale lord du bundling, ex : optimiser le code, gérer des assets etc..
+
+ex :
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+// les autre params ne sont pas mis pour la lisibilité
+plugins: [
+    new HtmlWebpackPlugin({template: './src/index.html'})
+  ]
+}
+
+il faut donc ici installer la dépendances dans le package avec :
+npm i -D html-webpack-plugin
+
+ce plugin génère un fichier html et injecte les bundle de webpack
+
+
+
+
+        

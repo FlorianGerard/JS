@@ -1,0 +1,45 @@
+---------------
+Les nombres :
+
+Le standard double précision pour les nombres à virgule flottante
+Le format number permet d'encoder les nombres sur 64 bits (64 0 et 1), il respecte le format de double précision pour les nombres à virgule flottante.
+
+C'est un format officiel en informatique dont le nom est double-precision 64-bit binary format IEEE 754.
+---------------
+Les décimaux, exposant / notation scientifique :
+
+Stratégies pour les décimaux
+Si vous ne devez pas interagir avec de la monnaie, des taux de chances, des opérations mathématiques (calculs assurantiels etc), ou des grands nombres, ce n'est pas grave car la précision est très élevée en 64 bits.
+
+Dans les cas où vous souhaitez faire des additions, soustractions et multiplications, le plus simple est de convertir en nombres entiers puis de faire l'opération et de convertir en décimal :
+
+(0.2 * 100 + 0.1 * 100) / 100; // 0.3
+De cette manière il n'y a pas de perte de précision par arrondi car le calcul est réalisé sur les nombres entiers et non décimaux.
+
+Si vous voulez utiliser de la monnaie il vaut mieux raisonner en centimes et n'utiliser les décimaux que pour l'affichage et non les calculs en arrondissant.
+
+Si vous devez faire des calculs scientifiques impliquant des décimaux utilisez une librairie comme big.js.
+---------------
+Les méthodes globales :
+La fonction parseFloat()
+La fonction parseFloat() permet d'analyser (parser) une chaîne de caractères afin de la transformer en nombre flottant.
+
+L'analyse s'arrête dès que le caractère n'est pas + ou -, chiffre, un espace, un point ou un exposant.
+parseFloat(" 32.21frefz"); // 32.21
+parseFloat("   0.152e57  "); // 1.52e+56
+parseFloat(".1"); // 0.1
+parseFloat("a1"); // NaN
+La fonction parseInt()
+La fonction parseInt() permet d'analyser (parser) une chaîne de caractères afin de la transformer en entier dans la base spécifiée.
+
+L'analyse s'arrête également dès que le caractère n'est pas + ou -, chiffre, un espace, un point ou un exposant.
+parseInt(" 32.21frefz", 10); // 32
+parseInt("10101", 2); // 21
+
+Les autres fonctions
+D'autres fonctions existent pour faire un test sur un nombre et obtenir une caractéristique : pour savoir si il est fini (isFinite()), 
+que c'est un entier (isInteger()), qu'il s'agit de NaN (isNaN()), et comme nous l'avions vu, qu'il s'agit d'un entier sans overflow (isSafeInteger()).
+Ces fonctions retournent toutes un booléen suivant que le nombre passe le test ou non.
+---------------
+Objet Math
+Voir numbers.js

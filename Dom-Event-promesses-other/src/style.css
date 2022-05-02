@@ -1,0 +1,39 @@
+/* body {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div{
+    width: 200px;
+    height: 200px;
+    background-color: #eee;
+}
+
+.red{
+    background-color: red;
+} */
+
+/* Style Promesses */
+
+div {
+    font-weight: bold;
+  }
+  
+  .succes {
+    color: green;
+  }
+  
+  .succes::before {
+    content: "[🥳 **Succès**] ";
+  }
+  
+  .echec {
+    color: red;
+  }
+  
+  .echec::before {
+    content: "[🥶 **Echec**] ";
+  }

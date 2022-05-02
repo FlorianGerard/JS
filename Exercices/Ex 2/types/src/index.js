@@ -1,0 +1,1 @@
+export let a = true, b = 50, c = 50n, d = 'test' 

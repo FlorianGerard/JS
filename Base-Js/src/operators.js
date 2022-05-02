@@ -1,0 +1,2 @@
+// Opérateurs JS 
+// !! -> conversion boolean
