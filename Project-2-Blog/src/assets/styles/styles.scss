@@ -30,16 +30,50 @@ header {
     font-size: 4rem;
     font-weight: 700;
   }
-  ul {
-    display: flex;
-    li {
-      .header-nav {
-        font-size: 1.8rem;
-        padding: 0 10px;
+  .header-menu {
+    ul {
+      @include xs {
+        display: none;
       }
-      .active {
-        font-weight: 700;
-        text-decoration: underline;
+      display: flex;
+      li {
+        .header-nav {
+          font-size: 1.8rem;
+          padding: 0 10px;
+        }
+        .active {
+          font-weight: 700;
+          text-decoration: underline;
+        }
+      }
+    }
+    .header-menu-icon {
+      display: none;
+      color: #fff;
+      font-size: 3rem;
+      @include xs {
+        display: block;
+      }
+    }
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      padding: 3rem 2rem;
+      background: white;
+      top: 9.5rem;
+      width: 20rem;
+      right: 1rem;
+      box-shadow: var(--box-shadow);
+      &.open{
+        display: block;
+      }
+      ul {
+        display: block;
+        li {
+          a {
+            color: var(--text);
+          }
+        }
       }
     }
   }
