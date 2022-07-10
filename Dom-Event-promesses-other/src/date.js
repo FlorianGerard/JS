@@ -5,8 +5,8 @@
 // const date2 = new Date(2020, 0, 7, 10, 50)
 
 // console.log(today.toString());
-// console.log(date); 
-// console.log(date2);  
+// console.log(date);
+// console.log(date2);
 
 // *** Les formats des Dates en chaîne de caractères ***
 
@@ -24,7 +24,7 @@
 
 // console.log(date);
 
-//  const todayTimestamp = Date.now(); 
+//  const todayTimestamp = Date.now();
 
 //  console.log((todayTimestamp - date.getTime()) / 1000 / 60);
 
@@ -34,14 +34,14 @@
 // setTimeout(() => {
 //     date2 = Date.now();
 //     const diff = date2 - date
-//     console.log(diff); 
+//     console.log(diff);
 // }, 3000);
 
 // *** L'API des objets Date ***
 
 const date = new Date();
 
-console.log(date.toISOString);
+// console.log(date.toISOString);
 
 // console.log(date.getUTCDate());
 // console.log(date.getDay());
@@ -50,8 +50,26 @@ console.log(date.toISOString);
 
 // date.setHours(date.getHours() + 1); // incrémente sur l'heure / minute / secondes en fonction de la méthode
 
-const date2 = new Date("2020-01-31T11:12:20.663Z");
+// const date2 = new Date("2020-01-31T11:12:20.663Z");
 
-date2.setDate(date2.getDate() +1) // incrémente le jour
+// date2.setDate(date2.getDate() +1) // incrémente le jour
 
-console.log(date2.toJSON()); // convertit en format JSON, similaire au format ISO
+// console.log(date2.toJSON()); // convertit en format JSON, similaire au format ISO
+
+// *** Affichage des dates ***
+
+// console.log(date);
+// console.log(date.toDateString());
+// console.log(date.toTimeString());
+// console.log(date.toLocaleDateString('fr-FR'));
+// console.log(date.toLocaleTimeString('fr-FR'));
+
+// setInterval(() => {
+//     console.log(new Date().toLocaleTimeString("fr-FR"))
+// }, 1000);
+
+console.log(date.toLocaleDateString("fr-FR", { 
+    weekday: 'long',
+    day: "2-digit",
+    year: "2-digit" 
+}));
