@@ -2,7 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-    entry: [path.resolve(__dirname, "src/network.js")],
+    entry: [path.resolve(__dirname, "src/location.js")],
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "[name].bundle.js"
@@ -33,7 +33,10 @@ module.exports = {
     devServer: {
         static: path.resolve(__dirname, './dist'),
         open: true,
-        port: 4000
-    },
+        port: 4000,
+        historyApiFallback : {
+            index: 'index.html'
+        }
+    },  
     
 };
